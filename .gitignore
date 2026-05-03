@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# Node
+node_modules/
+dist/
+
+# Environment
+.env
+backend/.env
+frontend/.env
+
+# Uploads and local data
+backend/uploads/*
+!backend/uploads/.gitkeep
+*.db
+
+# IDE / OS
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store

@@ -1,0 +1,9 @@
+alembic==1.14.1
+fastapi==0.115.6
+pydantic-settings==2.6.1
+PyMuPDF==1.24.14
+psycopg[binary]==3.2.10
+python-dotenv==1.0.1
+python-multipart==0.0.17
+SQLAlchemy==2.0.36
+uvicorn[standard]==0.32.1

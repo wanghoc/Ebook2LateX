@@ -1,0 +1,5 @@
+[
+  { "latex_content": "\\int_{0}^{1} x^2 dx", "order_index": 1 },
+  { "latex_content": "E = mc^2", "order_index": 2 },
+  { "latex_content": "\\sum_{n=1}^{\\infty} \\frac{1}{n^2} = \\frac{\\pi^2}{6}", "order_index": 3 }
+]
