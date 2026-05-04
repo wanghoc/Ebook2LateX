@@ -9,6 +9,7 @@ class FormulaOut(BaseModel):
     document_id: UUID
     latex_content: str | None
     order_index: int
+    confidence_score: float | None = None
     created_at: datetime | None
     updated_at: datetime | None
 

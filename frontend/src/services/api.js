@@ -18,3 +18,20 @@ export async function submitDocument(documentId, formulas) {
   const response = await api.post(`/documents/${documentId}/submit`, { formulas });
   return response.data;
 }
+
+export async function updateFormula(formulaId, latexContent) {
+  const response = await api.put(`/formulas/${formulaId}`, {
+    latex_content: latexContent
+  });
+  return response.data;
+}
+
+export async function getDocumentFormulas(documentId) {
+  const response = await api.get(`/documents/${documentId}/formulas`);
+  return response.data;
+}
+
+export async function deleteFormula(formulaId) {
+  const response = await api.delete(`/formulas/${formulaId}`);
+  return response.status === 204 || response.data;
+}

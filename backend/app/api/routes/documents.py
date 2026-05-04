@@ -50,13 +50,13 @@ def upload_document(
         db.flush()
 
         extracted_formulas = extract_latex_from_pdf(stored_path)
-        for index, latex in enumerate(extracted_formulas, start=1):
+        for index, candidate in enumerate(extracted_formulas, start=1):
             db.add(
                 FormulaEntry(
                     id=uuid.uuid4(),
                     document_id=document.id,
                     raw_image_path=None,
-                    latex_content=latex,
+                    latex_content=candidate.latex_content,
                     order_index=index,
                 )
             )
@@ -79,7 +79,20 @@ def upload_document(
         document_id=document.id,
         file_name=document.file_name,
         formula_count=len(formulas),
-        formulas=[FormulaOut.model_validate(item) for item in formulas],
+        formulas=[
+            FormulaOut(
+                id=item.id,
+                document_id=item.document_id,
+                latex_content=item.latex_content,
+                order_index=item.order_index,
+                confidence_score=extracted_formulas[item.order_index - 1].confidence_score
+                if item.order_index - 1 < len(extracted_formulas)
+                else None,
+                created_at=item.created_at,
+                updated_at=item.updated_at,
+            )
+            for item in formulas
+        ],
     )
 
 

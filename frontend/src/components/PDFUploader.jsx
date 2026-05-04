@@ -9,9 +9,14 @@ export default function PDFUploader({ onUpload, uploading }) {
   };
 
   return (
-    <div className="card">
-      <h3>Upload PDF</h3>
-      <input type="file" accept=".pdf,application/pdf" onChange={handleChange} disabled={uploading} />
+    <div className="card upload-card">
+      <p className="eyebrow">Step 1</p>
+      <h3>Upload a PDF</h3>
+      <p className="muted">Choose one PDF file. The app will extract likely formulas automatically.</p>
+      <label className={`upload-button ${uploading ? "disabled" : ""}`}>
+        <input type="file" accept=".pdf,application/pdf" onChange={handleChange} disabled={uploading} />
+        <span>{uploading ? "Processing..." : "Choose PDF file"}</span>
+      </label>
     </div>
   );
 }

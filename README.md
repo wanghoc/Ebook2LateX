@@ -15,18 +15,14 @@ Web app to process math ebook PDFs, edit LaTeX with a two-way MathLive editor, a
 docker compose up --build
 ```
 
-Command above now starts **only backend + database**.
+Command above now starts **backend + database + frontend**.
 
 Services:
 
 - Backend: http://localhost:8000
 - API docs: http://localhost:8000/docs
 
-If you also want frontend in Docker:
-
-```bash
-docker compose --profile frontend up --build
-```
+- Frontend: http://localhost:5173
 
 ## Run locally
 

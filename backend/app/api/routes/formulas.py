@@ -25,3 +25,17 @@ def update_formula(
     db.commit()
     db.refresh(formula)
     return FormulaOut.model_validate(formula)
+
+
+@router.delete("/{formula_id}", status_code=204)
+def delete_formula(
+    formula_id: UUID,
+    db: Session = Depends(get_db_session),
+):
+    formula = db.query(FormulaEntry).filter(FormulaEntry.id == formula_id).first()
+    if formula is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Formula not found.")
+
+    db.delete(formula)
+    db.commit()
+    return None

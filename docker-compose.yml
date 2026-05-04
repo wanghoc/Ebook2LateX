@@ -33,13 +33,12 @@ services:
       - "8000:8000"
     volumes:
       - ./backend:/app
-    command: ["/bin/sh", "/app/start.sh"]
+    command: ["/bin/sh", "-lc", "sed -i 's/\\r$//' /app/start.sh && exec /bin/sh /app/start.sh"]
 
   frontend:
     build:
       context: ./frontend
     container_name: ebook2latex-frontend
-    profiles: ["frontend"]
     depends_on:
       - backend
     environment:

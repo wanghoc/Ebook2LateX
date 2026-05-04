@@ -40,6 +40,8 @@ From project root:
 docker compose up --build
 ```
 
+That command now brings up backend, database, and frontend together.
+
 Backend container automatically waits for DB and runs `alembic upgrade head` before starting API.
 
 If you installed `psycopg2-binary` before, refresh deps:

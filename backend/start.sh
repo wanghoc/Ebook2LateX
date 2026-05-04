@@ -1,5 +1,5 @@
 #!/bin/sh
-set -eu
+set -e
 
 echo "[backend] Waiting for database..."
 python - <<'PY'

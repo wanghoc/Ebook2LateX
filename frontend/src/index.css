@@ -1,100 +1,338 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  color: #111827;
-  background-color: #f3f4f6;
+  font-family: Georgia, "Times New Roman", serif;
+  color: #10201b;
+  background:
+    radial-gradient(circle at top left, rgba(232, 243, 239, 0.9), transparent 36%),
+    linear-gradient(180deg, #f7fbf9 0%, #eef5f2 100%);
+  color-scheme: light;
 }
 
 * {
   box-sizing: border-box;
 }
 
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
 body {
   margin: 0;
+  min-height: 100vh;
+  background: transparent;
+}
+
+button,
+input,
+textarea,
+math-field {
+  font: inherit;
+}
+
+.app-shell {
+  min-height: 100vh;
 }
 
 .container {
-  max-width: 1100px;
+  max-width: 1180px;
   margin: 0 auto;
-  padding: 24px 16px;
+  padding: 28px 18px 40px;
 }
 
 .title {
-  margin: 0 0 16px;
-  font-size: 28px;
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  letter-spacing: -0.04em;
+}
+
+.hero {
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 20px;
+}
+
+.lead {
+  max-width: 60ch;
+  margin: 10px 0 0;
+  color: #335048;
+  line-height: 1.6;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  color: #5a756d;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.stat,
+.badge {
+  border: 1px solid rgba(16, 32, 27, 0.12);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+}
+
+.stat {
+  min-width: 130px;
+  padding: 12px 14px;
+  border-radius: 16px;
+}
+
+.stat span,
+.badge,
+.muted,
+.status {
+  color: #5b7069;
+}
+
+.stat strong {
+  display: block;
+  margin-top: 4px;
+  color: #10201b;
+  font-size: 1.1rem;
+}
+
+.workflow-grid {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 18px;
+}
+
+.stack {
+  display: grid;
+  gap: 18px;
 }
 
 .card {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-  padding: 16px;
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(16, 32, 27, 0.08);
+  border-radius: 22px;
+  padding: 18px;
+  box-shadow: 0 18px 40px rgba(16, 32, 27, 0.08);
+}
+
+.card-header,
+.editor-toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.badge {
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 0.85rem;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: minmax(240px, 360px) minmax(0, 1fr);
   gap: 16px;
-  margin-top: 16px;
+}
+
+.formula-list-card,
+.editor-card,
+.upload-card,
+.steps-card {
+  height: fit-content;
 }
 
 .formula-item {
   width: 100%;
   text-align: left;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  background: #ffffff;
-  padding: 10px;
-  margin-bottom: 8px;
+  border: 1px solid rgba(16, 32, 27, 0.08);
+  border-radius: 16px;
+  background: rgba(248, 250, 249, 0.92);
+  padding: 12px 14px;
+  margin-top: 10px;
   cursor: pointer;
+  transition: transform 120ms ease, border-color 120ms ease, background-color 120ms ease;
 }
 
 .formula-item.active {
-  border-color: #2563eb;
-  background: #eff6ff;
+  border-color: #1e8269;
+  background: #ebf8f3;
+  transform: translateY(-1px);
+}
+
+.formula-item-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+  font-size: 0.92rem;
+}
+
+.formula-item-top span {
+  color: #758b84;
+  font-size: 0.82rem;
+}
+
+.formula-preview {
+  margin-top: 8px;
+  color: #183029;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .controls {
   display: flex;
   gap: 8px;
-  margin-top: 12px;
+  flex-wrap: wrap;
 }
 
 button {
   border: 0;
-  border-radius: 8px;
-  padding: 10px 14px;
+  border-radius: 999px;
+  padding: 10px 16px;
   cursor: pointer;
+  transition: transform 120ms ease, opacity 120ms ease, background-color 120ms ease;
 }
 
 button.primary {
-  background: #2563eb;
+  background: linear-gradient(135deg, #176d57, #1d8a6c);
   color: #ffffff;
 }
 
 button.secondary {
-  background: #111827;
-  color: #ffffff;
+  background: #e3eeea;
+  color: #173027;
 }
 
-textarea {
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.upload-button {
+  display: inline-flex;
   width: 100%;
-  min-height: 120px;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  padding: 10px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  margin-top: 14px;
+  padding: 14px 16px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #102b24, #1c5a48);
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.upload-button input {
+  display: none;
+}
+
+.upload-button.disabled {
+  opacity: 0.7;
+  cursor: progress;
 }
 
 math-field {
   width: 100%;
-  min-height: 58px;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  padding: 8px;
+  min-height: 72px;
+  border: 1px solid rgba(16, 32, 27, 0.12);
+  border-radius: 18px;
+  padding: 14px 16px;
   background: #ffffff;
 }
 
+math-field.is-disabled {
+  opacity: 0.65;
+}
+
+.latex-preview {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: #f4f7f6;
+  border: 1px solid rgba(16, 32, 27, 0.08);
+}
+
+.latex-preview span {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #69817a;
+}
+
+.latex-preview code {
+  display: block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: #183029;
+  word-break: break-word;
+}
+
+.steps-card ol {
+  margin: 12px 0 0;
+  padding-left: 18px;
+  color: #2c4a42;
+  line-height: 1.7;
+}
+
 .status {
-  margin-top: 8px;
-  color: #374151;
+  margin-top: 10px;
+  min-height: 1.5em;
+}
+
+.editor-column {
+  display: grid;
+  gap: 14px;
+}
+
+.submit-row {
+  justify-content: flex-end;
+}
+
+.save-row {
+  justify-content: flex-start;
+  margin-top: 10px;
+}
+
+@media (max-width: 900px) {
+  .hero,
+  .workflow-grid,
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    display: grid;
+    align-items: start;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 18px 14px 28px;
+  }
+
+  .card {
+    border-radius: 18px;
+    padding: 16px;
+  }
+
+  .card-header,
+  .editor-toolbar {
+    flex-direction: column;
+    align-items: start;
+  }
 }
